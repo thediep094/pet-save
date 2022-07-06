@@ -1,92 +1,294 @@
-# Pet
+# Shopify theme
 
+## Requirements
 
+- [Node v16+](https://nodejs.org/en/)
+- [Shopify CLI v2.17.0+](https://shopify.dev/themes/tools/cli)
 
-## Getting started
+Note: Please refer to [Install Shopify CLI](https://shopify.dev/themes/tools/cli/installation) if you haven't installed Shopify CLI yet.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+[📖 Upgrade or uninstall Shopify CLI](https://shopify.dev/themes/tools/cli/upgrade-uninstall)
+## Main dependencies
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+- [Shopify CLI](https://shopify.dev/themes/tools/cli)
+- [Yarn](https://yarnpkg.com/)
+- [Webpack](https://webpack.js.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Sass](https://sass-lang.com/)
+- [ESLint](https://eslint.org/)
+- [Stylelint](https://stylelint.io/)
+- [Prettier](https://prettier.io/)
+- [Jest](https://jestjs.io/)
+- [Playwright](https://playwright.dev/)
 
-## Add your files
+## How to use
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+Clone this repository and install dependencies.
+
+```bash
+npm install
+```
+
+### Authenticate
+
+Connect Shopify CLI with the store that you want to work on.
+
+```bash
+shopify login --store xxxxxxxxx.myshopify.com
+```
+
+### Create a new theme
+
+Use `newTheme` command to create a new theme from scratch. This command creates a copy of Dawn.
+
+```bash
+yarn newTheme
+```
+
+[📖 Theme commands - init](https://shopify.dev/themes/tools/cli/theme-commands#init)
+
+### Customize an existing theme
+
+Use `pull:new` command to customize an existing theme.
+
+```bash
+yarn pull:new
+```
+
+### Add CSS and JavaScript into your theme files
+
+Add these tags in `<head></head>` section.
+
+```liquid
+{{ 'style.css' | asset_url | stylesheet_tag }}
+```
+
+```liquid
+<script src="{{ 'main.js' | asset_url }}" defer></script>
+```
+
+## Available Commands
+
+Recommend you to check out these commands before you get started.
+
+### Start command
+
+Start your project in development mode.
+
+```bash
+yarn start
+```
+
+### Build command
+
+Build your project for production.
+
+```bash
+yarn build
+```
+
+Build your project for development.
+
+```bash
+yarn build:dev
+```
+
+<details>
+<summary>Other support commands</summary>
+
+### Pull command
+
+Retrieve theme files from Shopify without deleting local files.
+
+```bash
+yarn pull
+```
+
+### Push command
+
+Upload your local theme files to Shopify without deleting remote files.
+
+```bash
+yarn push
+```
+
+Push to your development theme. If you don't have a development theme, then one is created.
+
+```bash
+yarn push:dev
+```
+
+Upload the theme to the theme library as a new unpublished theme.
+
+```bash
+yarn push:upload
+```
+
+### Deploy command
+
+Build your local files and upload them to Shopify as production.
+
+```bash
+yarn deploy
+```
+
+Build your local files and upload them to Shopify as development.
+
+```bash
+yarn deploy:dev
+```
+
+### Preview command
+Returns links that let you preview the specified theme.
+
+```bash
+yarn preview
+```
+
+### Cheat command
+
+Open Shopify Cheat Sheet.
+
+```bash
+yarn cheat
+```
+
+[Shopify Cheat Sheet](https://www.shopify.com/partners/shopify-cheat-sheet)
+
+### Lint command
+
+Lint this project code.
+
+```bash
+yarn lint
+```
+
+Fix this project code.
+
+```bash
+yarn lint:fix
+```
+
+### Test command
+
+Run End-to-end testing and unit testing.
+
+```bash
+yarn test
+```
+
+Run unit testing.
+
+```bash
+yarn unit
+```
+
+```bash
+yarn unit:watch
+```
+
+Run End-to-end testing in a headless.
+
+```bash
+yarn e2e
+```
+
+Run End-to-end testing with headed browser.
+
+```bash
+yarn e2e:headed
+```
+
+Generate End-to-end test code.
+
+```bash
+yarn e2e:codegen
+```
+
+### Share command
+Uploads your theme as a new, unpublished theme in your theme library.
+
+```bash
+yarn share
+```
+
+### Package command
+Packages your local theme files into a ZIP file that can be uploaded to Shopify.
+
+```bash
+yarn package
+```
+
+### Products command
+Creates products in your store. Products are created with a title and a price.
+
+```bash
+yarn products
+```
+
+### Customers command
+Creates customers in your store. Customers are created with a name only.
+
+```bash
+yarn customers
+```
+
+### Draft orders command
+Creates draft orders in your store. Draft orders are created with one custom item.
+
+```bash
+yarn draftorders
+```
+
+### Store command
+Displays the store that you're currently connected to.
+
+```bash
+yarn store
+```
+
+### PostInstall command
+
+Install missing TypeScript typings.
+
+```bash
+yarn postInstall
+```
+
+</details>
+
+## End-to-end test
+Please create an env file and run this command if you want to do an End-to-end test.
+
+Install supported browsers.
+
+```bash
+yarn e2e:install
+```
+## SVG sprite
+You can manage SVG sprites with [svg-sprite-loader](https://www.npmjs.com/package/svg-sprite-loader).
+
+Add SVG images into `sprite-image` folder.
 
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/xopify-themes/pet.git
-git branch -M main
-git push -uf origin main
+src/ts/sprite-image/*.svg
 ```
 
-## Integrate with your tools
+Import SVG images at entrypoint.
 
-- [ ] [Set up project integrations](https://gitlab.com/xopify-themes/pet/-/settings/integrations)
+```ts
+// Import SVG Sprite Images
+import './sprite-image/bag.svg';
+```
 
-## Collaborate with your team
+The way of Using SVG Sprites in HTML and Liquid.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+```html
+<svg>
+  <use xlink:href="#bag"></use>
+</svg>
+```
 
-## Test and Deploy
+## Recommended IDE
 
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+[Visual Studio Code](https://code.visualstudio.com/)

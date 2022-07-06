@@ -1,0 +1,65 @@
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/scss/style.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************/
+/* ========================================
+  Color Variables
+======================================== */
+/* ========================================
+  Base
+  Note: Difine your base style
+======================================== */
+:root {
+  --color-canvas-primary: #fff;
+  --color-canvas-inverted: #333;
+  --color-brand-primary: #ffa800;
+  --color-brand-secondary: #ffc635;
+  --color-brand-tertiary: #ff6b00;
+  --color-text-primary: #333;
+  --color-text-secondary: #ccc;
+  --color-text-tertiary: #ff6b00;
+  --color-text-inverted: #fff;
+  --color-text-link: #ff6b00;
+  --color-text-success: #00b533;
+  --color-text-warn: #ffb700;
+  --color-text-danger: #ff2600;
+  --color-ui-primary: #ff6b00;
+  --color-ui-secondary: #ffc635;
+  --color-ui-tertiary: #ffc635;
+  --color-ui-success: #00b533;
+  --color-ui-warn: #ffb700;
+  --color-ui-danger: #ff2600;
+}
+
+/* ========================================
+  Screen Reader Utility
+======================================== */
+.u-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border-width: 0 !important;
+}
+
+/* ========================================
+  Text Align Utility
+======================================== */
+.u-text-left {
+  text-align: left !important;
+}
+
+.u-text-center {
+  text-align: center !important;
+}
+
+.u-text-right {
+  text-align: right !important;
+}
+
+.u-text-justify {
+  text-align: justify !important;
+}
