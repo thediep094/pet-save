@@ -1,7 +1,8 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyFilePlugin = require('copy-webpack-plugin');
+// const CopyFilePlugin = require('copy-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
-const publicPath = `${__dirname}/shopify/`;
+const { BuildJsonPlugin } = require('./build-utils/addons/webpack.build-json');
+// const publicPath = `${__dirname}/shopify/`;
 const assetsPath = `${__dirname}/shopify/assets`;
 
 // Set production or development via NODE_ENV
@@ -75,25 +76,26 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
+    new BuildJsonPlugin(),
     new MiniCssExtractPlugin({
       filename: 'style.css',
     }),
-    new CopyFilePlugin(
-     {
-      patterns: [
-        {
-          context: 'src',
-          from: '**/*',
-          to: publicPath,
-          globOptions: {
-            dot: true,
-            gitignore: true,
-            ignore: ['**/*.ts', '**/*.tsx', '**/*.scss'],
-          }
-        },
-      ]
-     }
-    ),
+    // new CopyFilePlugin(
+    //  {
+    //   patterns: [
+    //     {
+    //       context: 'src',
+    //       from: '**/*',
+    //       to: publicPath,
+    //       globOptions: {
+    //         dot: true,
+    //         gitignore: true,
+    //         ignore: ['**/*.ts', '**/*.tsx', '**/*.scss'],
+    //       }
+    //     },
+    //   ]
+    //  }
+    // ),
     new WriteFilePlugin(),
   ],
   target: ['web', 'es5'],

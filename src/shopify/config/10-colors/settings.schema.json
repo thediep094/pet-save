@@ -1,0 +1,139 @@
+{
+  "name": "t:settings_schema.colors.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:settings_schema.colors.settings.primary.content"
+    },
+    {
+      "type": "color",
+      "id": "colors_primary_accent_1",
+      "default": "#F0510D",
+      "label": "t:settings_schema.colors.settings.primary.accent_1"
+    },
+    {
+      "type": "color",
+      "id": "colors_primary_accent_2",
+      "default": "#894722",
+      "label": "t:settings_schema.colors.settings.primary.accent_2"
+    },
+    {
+      "type": "header",
+      "content": "t:settings_schema.colors.settings.secondary.content"
+    },
+    {
+      "type": "color",
+      "id": "colors_secondary_text",
+      "default": "#894722",
+      "label": "t:settings_schema.colors.settings.secondary.text"
+    },
+    {
+      "type": "color",
+      "id": "colors_secondary_subtitle",
+      "default": "#BF8D77",
+      "label": "t:settings_schema.colors.settings.secondary.subtitle"
+    },
+    {
+      "type": "color",
+      "id": "colors_secondary_background_1",
+      "default": "#000000",
+      "label": "t:settings_schema.colors.settings.secondary.background_1"
+    },
+    {
+      "type": "color",
+      "id": "colors_secondary_background_2",
+      "default": "#FFE6C9",
+      "label": "t:settings_schema.colors.settings.secondary.background_2"
+    },
+    {
+      "type": "color",
+      "id": "colors_secondary_background_3",
+      "default": "#FFFFFF",
+      "label": "t:settings_schema.colors.settings.secondary.background_3"
+    },
+    {
+      "type": "header",
+      "content": "t:settings_schema.colors.settings.header.content"
+    },
+    {
+      "type": "color",
+      "id": "colors_header_background",
+      "default": "#FFFFFF",
+      "label": "t:settings_schema.colors.settings.header.background"
+    },
+    {
+      "type": "color",
+      "id": "colors_header_page_title",
+      "default": "#894722",
+      "label": "t:settings_schema.colors.settings.header.page_title"
+    },
+    {
+      "type": "color",
+      "id": "colors_header_link",
+      "default": "#F0510D",
+      "label": "t:settings_schema.colors.settings.header.link"
+    },
+    {
+      "type": "color",
+      "id": "colors_header_line",
+      "default": "#894722",
+      "label": "t:settings_schema.colors.settings.header.line"
+    },
+    {
+      "type": "header",
+      "content": "t:settings_schema.colors.settings.footer.content"
+    },
+    {
+      "type": "color",
+      "id": "colors_footer_background",
+      "default": "#FFE6C9",
+      "label": "t:settings_schema.colors.settings.footer.background"
+    },
+    {
+      "type": "color",
+      "id": "colors_footer_title",
+      "default": "#F0510D",
+      "label": "t:settings_schema.colors.settings.footer.title"
+    },
+    {
+      "type": "color",
+      "id": "colors_footer_text",
+      "default": "#894722",
+      "label": "t:settings_schema.colors.settings.footer.text"
+    },
+    {
+      "type": "color",
+      "id": "colors_footer_link",
+      "default": "#F0510D",
+      "label": "t:settings_schema.colors.settings.footer.link"
+    },
+    {
+      "type": "color",
+      "id": "colors_footer_line",
+      "default": "#D2B8AD",
+      "label": "t:settings_schema.colors.settings.footer.line"
+    },
+    {
+      "type": "header",
+      "content": "t:settings_schema.colors.settings.button.content"
+    },
+    {
+      "type": "color",
+      "id": "colors_button_label",
+      "default": "#ffffff",
+      "label": "t:settings_schema.colors.settings.button.label"
+    },
+    {
+      "type": "color",
+      "id": "colors_button_color_1",
+      "default": "#F0510D",
+      "label": "t:settings_schema.colors.settings.button.color_1"
+    },
+    {
+      "type": "color",
+      "id": "colors_button_color_2",
+      "default": "#F0510D",
+      "label": "t:settings_schema.colors.settings.button.color_2"
+    }
+  ]
+}

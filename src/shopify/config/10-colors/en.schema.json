@@ -1,0 +1,39 @@
+{
+  "name": "Colors",
+  "settings": {
+    "primary": {
+      "content": "Primary colors",
+      "accent_1": "Accent 1",
+      "accent_2": "Accent 2"
+    },
+    "secondary": {
+      "content": "Secondary colors",
+      "text": "Text",
+      "subtitle": "Subtitle & label",
+      "background_1": "Background 1",
+      "background_2": "Background 2",
+      "background_3": "Background 3"
+    },
+    "header": {
+      "content": "Header colors",
+      "background": "Background",
+      "page_title": "Page title",
+      "link": "Link & hover",
+      "line": "Line"
+    },
+    "footer": {
+      "content": "Footer colors",
+      "background": "Background",
+      "title": "Title",
+      "text": "Text",
+      "link": "Link & hover",
+      "line": "Line"
+    },
+    "button": {
+      "content": "Button colors",
+      "label": "Label",
+      "color_1": "Color 1",
+      "color_2": "Color 2"
+    }
+  }
+}

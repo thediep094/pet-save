@@ -1,0 +1,58 @@
+{
+  "presets": {
+    "Milky Default": {
+      "theme_layout": "layout1",
+      "header_layout": "layout1",
+      "footer_layout": "layout1",
+      "product_cart_layout": "layout1",
+      "colors_primary_accent_1": "#F0510D",
+      "colors_primary_accent_2": "#894722",
+      "colors_primary_accent_3": "#BF8D77",
+      "colors_secondary_accent_1": "#FFE6C9",
+      "colors_secondary_accent_2": "#FFD933",
+      "colors_secondary_accent_3": "#FFFFFF",
+      "colors_background": "#FFFBEF",
+      "colors_label_button": "#FFFFFF",
+      "colors_background_button": "#F0510D",
+      "colors_border_button": "#F0510D",
+      "border_radius_button": 30,
+      "border_radius_input": 30
+    },
+    "Milky Grow": {
+      "theme_layout": "layout2",
+      "header_layout": "layout1",
+      "footer_layout": "layout2",
+      "product_cart_layout": "layout2",
+      "colors_primary_accent_1": "#FF6A7C",
+      "colors_primary_accent_2": "#1A3284",
+      "colors_primary_accent_3": "#FFF8FA",
+      "colors_secondary_accent_1": "#FFE6C9",
+      "colors_secondary_accent_2": "#5DBCE1",
+      "colors_secondary_accent_3": "#FFE2E5",
+      "colors_background": "#FFF",
+      "colors_label_button": "#FFE2E5",
+      "colors_background_button": "#FF6A7C",
+      "colors_border_button": "#FF6A7C",
+      "border_radius_button": 30,
+      "border_radius_input": 30
+    },
+    "Milky Totorico": {
+      "theme_layout": "layout3",
+      "header_layout": "layout2",
+      "footer_layout": "layout3",
+      "product_cart_layout": "layout2",
+      "colors_primary_accent_1": "#173122",
+      "colors_primary_accent_2": "#90182D",
+      "colors_primary_accent_3": "#FFF8FA",
+      "colors_secondary_accent_1": "#FFFFFF",
+      "colors_secondary_accent_2": "#7B8E84",
+      "colors_secondary_accent_3": "#C3B7A7",
+      "colors_background": "#E9E3DB",
+      "colors_label_button": "#FFE2E5",
+      "colors_background_button": "#FF6A7C",
+      "colors_border_button": "#FF6A7C",
+      "border_radius_button": 10,
+      "border_radius_input": 10
+    }
+  }
+}
