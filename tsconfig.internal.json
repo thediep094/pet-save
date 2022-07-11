@@ -5,19 +5,19 @@
     "module": "ESNext",
     "lib": ["ESNext", "DOM"],
     "moduleResolution": "Node",
-    "strict": true,
-    "sourceMap": true,
+    "strict": false,
+    "sourceMap": false,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "allowJs": true,
-    "checkJs": true
+    "checkJs": false,
+    "skipLibCheck": true,
   },
   "include": [
-    "src/ts/**/*.d.ts",
-    "src/ts/**/*.ts",
-    "src/shopify/sections/**/*.ts"
+    "src/shopify/sections/**/*.script-internal.ts",
+    "src/shopify/sections/**/*.script-external.ts",
   ]
 }

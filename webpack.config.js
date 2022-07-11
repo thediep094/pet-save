@@ -1,5 +1,7 @@
+const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const CopyFilePlugin = require('copy-webpack-plugin');
+const CopyFilePlugin = require('copy-webpack-plugin');
+const WatchExternalFilesPlugin = require('webpack-watch-files-plugin').default;
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const { BuildJsonPlugin } = require('./build-utils/addons/webpack.build-json');
 // const publicPath = `${__dirname}/shopify/`;
@@ -24,8 +26,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
+        test: /\.ts?$/,
+        use: ['ts-loader', 'glob-import-loader'],
       },
       {
         test: /\.scss/,
@@ -61,6 +63,9 @@ module.exports = {
               sourceMap: enabledSourceMap,
             },
           },
+          {
+            loader: 'glob-import-loader'
+          }
         ],
       },
       {
@@ -70,7 +75,7 @@ module.exports = {
           'svgo-loader'
         ]
       }
-    ],
+    ]
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
@@ -80,22 +85,34 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'style.css',
     }),
-    // new CopyFilePlugin(
-    //  {
-    //   patterns: [
-    //     {
-    //       context: 'src',
-    //       from: '**/*',
-    //       to: publicPath,
-    //       globOptions: {
-    //         dot: true,
-    //         gitignore: true,
-    //         ignore: ['**/*.ts', '**/*.tsx', '**/*.scss'],
-    //       }
-    //     },
-    //   ]
-    //  }
-    // ),
+    new WatchExternalFilesPlugin({
+      files: [
+        './src/shopify/**/*.js',
+        './src/shopify/**/*.json',
+        './src/shopify/**/*.liquid'
+      ]
+    }),
+    new CopyFilePlugin(
+     {
+      patterns: [
+        {
+          context: 'src/shopify',
+          from: '**/*.script-external.js',
+          // to: `${assetsPath}/[name][ext]`,
+          to: ({ absoluteFilename }) => {
+            const fileName = path.parse(absoluteFilename).base.replace('.script-external.js', '.js');
+            return `${assetsPath}/${fileName}`;
+          },
+          // info: { minimized: true },
+          // globOptions: {
+          //   dot: true,
+          //   gitignore: true,
+          //   ignore: ['**/*.ts', '**/*.tsx', '**/*.scss'],
+          // }
+        },
+      ]
+     }
+    ),
     new WriteFilePlugin(),
   ],
   target: ['web', 'es5'],

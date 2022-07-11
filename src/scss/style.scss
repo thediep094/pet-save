@@ -10,3 +10,5 @@
 // =========================================
 @use './utility/screen-reader';
 @use './utility/text-align';
+
+@use '../shopify/sections/**/*.style-global.scss';

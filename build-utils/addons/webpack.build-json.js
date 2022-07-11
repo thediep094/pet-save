@@ -30,6 +30,7 @@ class BuildJsonPlugin {
     // You should probably validate all the options here as well.
     this.options = { ...BuildJsonPlugin.defaultOptions, ...options };
   }
+
   // Define `apply` as its prototype method which is supplied with compiler as its argument
   apply(compiler) {
     // webpack module instance can be accessed from the compiler object,
@@ -65,16 +66,24 @@ class BuildJsonPlugin {
             let folder = file.replace('/en.schema.json', '').split('/').pop();
             const liquidFile = file.replace('/en.schema.json', `/${folder}.liquid`);
             const schemaFile = file.replace('/en.schema.json', '/schema.js');
+            const inlineJSFile = file.replace('/en.schema.json', `/${folder}.script-internal.js`);
             const str = `{"${folder}": ${fs.readFileSync(file, 'utf8')}}`;
             sectionLocaleSchema = Object.assign(sectionLocaleSchema, JSON.parse(str));
 
             // build section liquid
             if (fs.existsSync(liquidFile)) {
               const { schema } = require(schemaFile);
-              console.log(JSON.stringify(schema));
-              // const chema = fs.readFileSync(schemaFile, 'utf8');
               const liquid = fs.readFileSync(liquidFile, 'utf8');
-              const liquidFinal = `${liquid}
+              let liquidFinal = liquid;
+              if (fs.existsSync(inlineJSFile)) {
+                const inlineJS = fs.readFileSync(inlineJSFile, 'utf8');
+                liquidFinal += `
+{% javascript %}
+${inlineJS}
+{% endjavascript %}
+`;
+              }
+              liquidFinal += `
 {% schema %}
 ${JSON.stringify(schema, null, 2)}
 {% endschema %}
