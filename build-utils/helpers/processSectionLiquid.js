@@ -22,7 +22,6 @@ const processSectionLiquid = (compilation, RawSource, file, sectionLocaleSchema)
   // complie sass
   if (fs.existsSync(sassFile)) {
     const result = sass.compile(sassFile, { style: 'expanded' });
-    console.log('result', sassFile, result);
     const css = result.css.toString();
     compilation.emitAsset(`../assets/section-${folder}.css`, new RawSource(css));
   }
