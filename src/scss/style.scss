@@ -11,4 +11,12 @@
 @use './utility/screen-reader';
 @use './utility/text-align';
 
+// =========================================
+// Bootstrap
+// =========================================
+@use './bootstrap/bootstrap-grid.min.css';
+
+// =========================================
+// Sections
+// =========================================
 @use '../shopify/sections/**/*.style-global.scss';

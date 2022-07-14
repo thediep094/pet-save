@@ -1,0 +1,133 @@
+{
+  "name": "Email signup banner",
+  "settings": {
+    "paragraph": {
+      "content": "Each email subscription creates a customer account. [Learn more](https://help.shopify.com/manual/customers)"
+    },
+    "image": {
+      "label": "Background image"
+    },
+    "image_overlay_opacity": {
+      "label": "Image overlay opacity"
+    },
+    "show_background_image": {
+      "label": "Show background image"
+    },
+    "show_text_box": {
+      "label": "Show container on desktop"
+    },
+    "desktop_content_position": {
+      "options__1": {
+        "label": "Top Left"
+      },
+      "options__2": {
+        "label": "Top Center"
+      },
+      "options__3": {
+        "label": "Top Right"
+      },
+      "options__4": {
+        "label": "Middle Left"
+      },
+      "options__5": {
+        "label": "Middle Center"
+      },
+      "options__6": {
+        "label": "Middle Right"
+      },
+      "options__7": {
+        "label": "Bottom Left"
+      },
+      "options__8": {
+        "label": "Bottom Center"
+      },
+      "options__9": {
+        "label": "Bottom Right"
+      },
+      "label": "Desktop content position"
+    },
+    "color_scheme": {
+      "info": "Visible when container displayed."
+    },
+    "image_height": {
+      "label": "Banner height",
+      "options__1": {
+        "label": "Adapt to image"
+      },
+      "options__2": {
+        "label": "Small"
+      },
+      "options__3": {
+        "label": "Medium"
+      },
+      "options__4": {
+        "label": "Large"
+      },
+      "info": "For best results, use an image with a 16:9 aspect ratio. [Learn more](https://help.shopify.com/manual/shopify-admin/productivity-tools/image-editor#understanding-image-aspect-ratio)"
+    },
+    "desktop_content_alignment": {
+      "options__1": {
+        "label": "Left"
+      },
+      "options__2": {
+        "label": "Center"
+      },
+      "options__3": {
+        "label": "Right"
+      },
+      "label": "Desktop content alignment"
+    },
+    "header": {
+      "content": "Mobile Layout"
+    },
+    "mobile_content_alignment": {
+      "options__1": {
+        "label": "Left"
+      },
+      "options__2": {
+        "label": "Center"
+      },
+      "options__3": {
+        "label": "Right"
+      },
+      "label": "Mobile content alignment"
+    },
+    "show_text_below": {
+      "label": "Show content below image on mobile",
+      "info": "For best results, use an image with a 16:9 aspect ratio. [Learn more](https://help.shopify.com/manual/shopify-admin/productivity-tools/image-editor#understanding-image-aspect-ratio)"
+    }
+  },
+  "blocks": {
+    "heading": {
+      "name": "Heading",
+      "settings": {
+        "heading": {
+          "label": "Heading"
+        }
+      }
+    },
+    "paragraph": {
+      "name": "Paragraph",
+      "settings": {
+        "paragraph": {
+          "label": "Description"
+        },
+        "text_style": {
+          "options__1": {
+            "label": "Body"
+          },
+          "options__2": {
+            "label": "Subtitle"
+          },
+          "label": "Text style"
+        }
+      }
+    },
+    "email_form": {
+      "name": "Email form"
+    }
+  },
+  "presets": {
+    "name": "Email signup banner"
+  }
+}
