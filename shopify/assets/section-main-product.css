@@ -75,7 +75,26 @@
 /* Dynamic checkout */
 
 .shopify-payment-button__button {
-  font-family: inherit;
+  border-radius: 30px;
+  background: #F0510D;
+  color: #ffffff;
+  width: 48%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 132%;
+  text-align: center;
+   letter-spacing: 0.1em;
+   text-transform: uppercase;
+   cursor: pointer;
   min-height: 4.6rem;
 }
 
@@ -97,6 +116,7 @@
 }
 
 .shopify-payment-button__button--unbranded {
+  width: 100%;
   background-color: rgba(var(--color-button), var(--alpha-button-background));
   color: rgb(var(--color-button-text));
   font-size: 1.4rem;
@@ -445,6 +465,9 @@ a.product__text {
 
 .product-form__buttons {
   max-width: 44rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .product--no-media .product__info-container > modal-opener {

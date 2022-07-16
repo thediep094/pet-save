@@ -8,23 +8,18 @@
 Note: Please refer to [Install Shopify CLI](https://shopify.dev/themes/tools/cli/installation) if you haven't installed Shopify CLI yet.
 
 [📖 Upgrade or uninstall Shopify CLI](https://shopify.dev/themes/tools/cli/upgrade-uninstall)
-## Section structure
+## Main dependencies
 
-Sections a placed in
-
-- `src/shopify/sections`
-- `src/shopify/sections-general` (must have for all theme)
-
-1 section has:
-
-section-name
-  - `en.schema.json`
-  - `section-name.liquid` - main liquid code
-  - `section-name.script-external.ts` - will generate a `section-name.js` in `shopify/assets` folder
-  - `section-name.script-global.ts` - will be embed in `shopify/assets/main.js`
-  - `section-name.script-internal.ts` - will be added in section liquid code, in side `{% javascript %}` tag
-  - `section-{section-name}.scss` - will generate `shopify/assets/section-{section-name}.css`
-  - `schema.js`
+- [Shopify CLI](https://shopify.dev/themes/tools/cli)
+- [Yarn](https://yarnpkg.com/)
+- [Webpack](https://webpack.js.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Sass](https://sass-lang.com/)
+- [ESLint](https://eslint.org/)
+- [Stylelint](https://stylelint.io/)
+- [Prettier](https://prettier.io/)
+- [Jest](https://jestjs.io/)
+- [Playwright](https://playwright.dev/)
 
 ## How to use
 
@@ -39,7 +34,7 @@ npm install
 Connect Shopify CLI with the store that you want to work on.
 
 ```bash
-shopify login --store neo-test-theme1.myshopify.com
+shopify login --store xxxxxxxxx.myshopify.com
 ```
 
 ### Create a new theme
@@ -60,7 +55,17 @@ Use `pull:new` command to customize an existing theme.
 yarn pull:new
 ```
 
+### Add CSS and JavaScript into your theme files
 
+Add these tags in `<head></head>` section.
+
+```liquid
+{{ 'style.css' | asset_url | stylesheet_tag }}
+```
+
+```liquid
+<script src="{{ 'main.js' | asset_url }}" defer></script>
+```
 
 ## Available Commands
 

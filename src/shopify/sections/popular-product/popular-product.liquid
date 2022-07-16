@@ -1,0 +1,39 @@
+{%- assign counter = 0 -%}
+{% assign collection = collections['all'] %}
+<div class="popularProduct">
+    <div class="popularProduct__top">
+        <div class="popularProduct__title">{{ section.settings.title }}</div>
+        <div class="popularProduct__des">{{ section.settings.description }}</div>
+    </div>
+    <div class="popularProduct__items">
+        {% for product in collection.products limit:3 %}
+            {%- unless top_product.id == product.id or counter >= 4 -%}
+                {%- assign counter = counter | plus: 1 -%}
+                <a href="{{ product.url }}" style="text-decoration: none;">
+                  <div class="popularProduct__item">
+                    {% if product.compare_at_price %}
+                        <div class="popularProduct__item__sale">SALE</div>
+                    {% endif %}
+                    <img src="{{ product.images[0] | product_img_url: 'large' }}" alt="" class="popularProduct__img">
+                    <span class="popularProduct__tag">
+                        {{product.tags[0]}}</span>
+                    <div class="popularProduct__itemTitle">
+                        {{product.title}}
+                    </div>
+                    <div class="popularProduct__price">
+                        <div class="popularProduct__maxprice">
+                            {{ product.compare_at_price | money }}
+                        </div>
+                        {{ product.price | money }}
+                    </div>
+                </div>
+                </a>
+            {%- endunless -%}
+        {% endfor %}
+    </div>
+    <a href="{{ routes.all_products_collection_url }}">
+      <div class="popularProduct__button">
+        {% render 'icon-button-all-product' %}
+      </div>
+    </a>
+</div>

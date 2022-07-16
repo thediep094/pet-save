@@ -2,8 +2,19 @@ const fs = require('fs');
 // const isGlob = require('is-glob');
 const glob = require('glob');
 const commonPath = require('../common-path');
-const { schemaString } = require('../helpers/schemaString');
-const processSectionLiquid = require('../helpers/processSectionLiquid');
+
+const schemaString = (files, type) => {
+  let dataObj = {};
+  files.forEach((file) => {
+    let folder = file.replace('/en.schema.json', '').split('/').pop();
+    if (type === 'settings') {
+      folder = folder.replace(/[\d]-/g, '');
+    }
+    const str = `{"${folder}": ${fs.readFileSync(file, 'utf8')}}`;
+    dataObj = Object.assign(dataObj, JSON.parse(str));
+  });
+  return dataObj;
+}
 
 class BuildJsonPlugin {
   static defaultOptions = {
@@ -49,10 +60,36 @@ class BuildJsonPlugin {
           //
           // locales/en.default.schema.json
           // Build section schema
-          const sectionFiles = glob.sync(`${commonPath.themeDevPath}/sections*/**/en.schema.json`);
+          const langFiles = glob.sync(`${commonPath.themeDevPath}/sections/**/en.schema.json`);
           let sectionLocaleSchema = {};
-          sectionFiles.forEach((file) => {
-            processSectionLiquid(compilation, RawSource, file, sectionLocaleSchema);
+          langFiles.forEach((file) => {
+            let folder = file.replace('/en.schema.json', '').split('/').pop();
+            const liquidFile = file.replace('/en.schema.json', `/${folder}.liquid`);
+            const schemaFile = file.replace('/en.schema.json', '/schema.js');
+            const inlineJSFile = file.replace('/en.schema.json', `/${folder}.script-internal.js`);
+            const str = `{"${folder}": ${fs.readFileSync(file, 'utf8')}}`;
+            sectionLocaleSchema = Object.assign(sectionLocaleSchema, JSON.parse(str));
+
+            // build section liquid
+            if (fs.existsSync(liquidFile)) {
+              const { schema } = require(schemaFile);
+              const liquid = fs.readFileSync(liquidFile, 'utf8');
+              let liquidFinal = liquid;
+              if (fs.existsSync(inlineJSFile)) {
+                const inlineJS = fs.readFileSync(inlineJSFile, 'utf8');
+                liquidFinal += `
+{% javascript %}
+${inlineJS}
+{% endjavascript %}
+`;
+              }
+              liquidFinal += `
+{% schema %}
+${JSON.stringify(schema, null, 2)}
+{% endschema %}
+`;
+              compilation.emitAsset(`../sections/${folder}.liquid`, new RawSource(liquidFinal));
+            }
           });
 
           // Build theme settings schema

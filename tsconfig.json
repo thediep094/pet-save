@@ -18,8 +18,6 @@
   "include": [
     "src/ts/**/*.d.ts",
     "src/ts/**/*.ts",
-    "src/shopify/sections/**/*.ts",
-    "src/shopify/sections/**/*.script-internal.ts",
-    "src/shopify/sections/**/*.script-external.ts"
+    "src/shopify/sections/**/*.ts"
   ]
 }

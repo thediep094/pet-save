@@ -1,3 +1,11 @@
+.disable-scroll {
+  overflow-y: hidden;
+}
+
+.enable-scroll {
+  overflow-y: auto;
+}
+
 .header__down {
   top: -90px !important;
 }
@@ -21,6 +29,7 @@
 .header__nothome {
   background-color: #FFFFFF;
 }
+
 
 .header {
   height: 70px;
@@ -65,7 +74,7 @@
         color: #894722;
         text-decoration: none;
 
-        .icon-arrow-down {
+        .icon-arrow-down-shop {
           width: 10px;
           margin-left: 6.48px;
         }
@@ -106,7 +115,7 @@
         cursor: pointer;
         color: #BF8D77;
 
-        .icon-search {
+        .icon__search__header {
           width: 23px;
         }
       }
@@ -272,7 +281,7 @@
         margin-left: 12px;
         cursor: pointer;
 
-        .icon-close-search {
+        .icon__close__search__modal {
           width: 24px;
           color: #FFE6C9;
         }

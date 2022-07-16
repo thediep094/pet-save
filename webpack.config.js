@@ -4,7 +4,7 @@ const CopyFilePlugin = require('copy-webpack-plugin');
 const WatchExternalFilesPlugin = require('webpack-watch-files-plugin').default;
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const { BuildJsonPlugin } = require('./build-utils/addons/webpack.build-json');
-const publicPath = `${__dirname}/shopify/`;
+// const publicPath = `${__dirname}/shopify/`;
 const assetsPath = `${__dirname}/shopify/assets`;
 
 // Set production or development via NODE_ENV
@@ -109,11 +109,6 @@ module.exports = {
           //   gitignore: true,
           //   ignore: ['**/*.ts', '**/*.tsx', '**/*.scss'],
           // }
-        },
-        {
-          context: 'src/shopify/sections-general',
-          from: '*.liquid',
-          to: `${publicPath}/sections/[name][ext]`,
         },
       ]
      }

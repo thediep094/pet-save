@@ -1,0 +1,16 @@
+{
+  "name": "Popular Product",
+  "settings": {
+    "popularproduct": {
+      "label": "Popular Product",
+      "title": " Title",
+      "description": "Description",
+      "textbutton": "Text Button",
+      "button_link": "Button Link",
+      "image_banner_type": "Image Banner Type"
+    }
+  },
+  "presets": {
+    "name": "Popular Product"
+  }
+}

@@ -1,0 +1,100 @@
+{{ 'section-testimonials.css' | asset_url | stylesheet_tag }}
+
+<div class="splide">
+  <div class="splide__track">
+    <ul class="splide__list">
+    {%- if section.blocks.size > 0 -%}
+    {%- for block in section.blocks -%}
+    <li class="slideshow-slide container-xl splide__slide">
+      <div class="slideshow-slide__content col-6 ">
+        <p class="slideshow-slide__content__name">
+          {{ section.settings.title }}
+        </p>
+       <div class="content-title-author">
+        <h3 class="content-title-author__title">
+          <span> {% render 'icon-quotation-mark' %} </span>
+          {{ block.settings.slide_title }}
+        </h3>
+        <div class="content-title-author__author">
+          <img
+            class="avatar-author-slide"
+            srcset="{{block.settings.avatar_author | img_url: 'master'  }}"
+          />
+          <p class="name-author-slide">{{ block.settings.name_author }}</p>
+        </div>
+       </div>
+      </div>
+      <div class="slideshow-slide__image col-6 ">
+        <img  class="image-front" srcset="{{block.settings.image_front | img_url: 'master'  }}" />
+        <img class="image-back" srcset="{{block.settings.image_back | img_url: 'master'  }}" />
+      </div>
+    </li>
+    {%- endfor -%} {%- else -%} {%- endif -%}
+  </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.testimonials.name",
+  "class": "section-slideshow",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "From our customer story",
+      "label": "t:sections.testimonials.settings.title.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "limit": 5,
+      "name": "t:sections.testimonials.blocks.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_front",
+          "label": "t:sections.testimonials.blocks.settings.label_image_front"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_back",
+          "label": "t:sections.testimonials.blocks.settings.label_image_back"
+        },
+        {
+          "type": "textarea",
+          "id": "slide_title",
+          "label": "t:sections.testimonials.blocks.settings.label_title_slide",
+          "default": "For close to a decade I've been hands-on with dogs transtioning to natural feeding. I have seen the vast majority experience evalated health and viality"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar_author",
+          "label": "t:sections.testimonials.blocks.settings.label_avatar_author"
+        },
+        {
+          "type": "text",
+          "id": "name_author",
+          "label": "t:sections.testimonials.blocks.settings.label_name_author",
+          "default": "Julia Robert"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.testimonials.presets.name",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

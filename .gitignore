@@ -21,11 +21,3 @@ package-lock.json
 
 # dotenv environment variables file
 .env
-
-# Shopify files
-shopify/assets/main.js
-shopify/assets/style.css
-shopify/config/settings_schema.json
-shopify/locales/en.default.schema.json
-shopify/sections/
-node_modules

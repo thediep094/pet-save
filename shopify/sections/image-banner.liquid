@@ -1,0 +1,106 @@
+{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+    {%- unless section.settings.background_image_desktop == blank -%}
+      background-image: url('{{ section.settings.background_image_desktop | img_url: 'master' }}');
+    {%- endunless -%}
+  }
+</style>
+
+  <div class="image-banner image-banner--type-{{ section.settings.image_banner_type }}">
+    {% case section.settings.image_banner_type %}
+    {% when "1" %}
+      <h2 class="image-banner__title image-banner__title--type{{ section.settings.image_banner_type }}">
+        {{ section.settings.text_title }}
+      </h2>
+    {% when "2" %}
+      <h3 class="image-banner__title image-banner__title--type{{ section.settings.image_banner_type }}">
+        {{ section.settings.text_title }}
+      </h3>
+    {% endcase %}
+    <h4 class="image-banner__subtitle image-banner__subtitle--type{{ section.settings.image_banner_type }}">
+      {{ section.settings.text_subtitle }}
+    </h4>
+    <a
+      class="image-banner__button image-banner__button--type{{ section.settings.image_banner_type }}"
+      href="{% if section.settings.button_link %}
+        {{ section.settings.button_link }}
+        {% else %}
+          #
+        {% endif %}"
+    >
+      <p>{{ section.settings.text_button }}</p>
+      {%- if section.settings.image_banner_type == "1" -%} {% render 'Vector-button-image-banner' %} {%- endif -%}
+    </a>
+  </div>
+
+
+{% schema %}
+{
+  "name": "t:sections.image-banner.name",
+  "class": "section-image-banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image_desktop",
+      "label": "t:sections.all.background.background_image_desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "t:sections.all.background.background_image_mobile"
+    },
+    {
+      "type": "text",
+      "id": "text_title",
+      "label": "t:sections.image-banner.settings.imagebaner.title",
+      "default": "Welcome to my shop"
+    },
+    {
+      "type": "textarea",
+      "id": "text_subtitle",
+      "label": "t:sections.image-banner.settings.imagebaner.subtitle",
+      "default": "Welcome to my shop!"
+    },
+    {
+      "type": "text",
+      "id": "text_button",
+      "label": "t:sections.image-banner.settings.imagebaner.textbutton",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.image-banner.settings.imagebaner.button_link"
+    },
+    {
+      "type": "select",
+      "id": "image_banner_type",
+      "label": "t:sections.image-banner.settings.imagebaner.image_banner_type",
+      "options": [
+        {
+          "value": "1",
+          "label": "Type 1"
+        },
+        {
+          "value": "2",
+          "label": "Type 2"
+        },
+        {
+          "value": "3",
+          "label": "Type 3"
+        }
+      ],
+      "default": "1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.image-banner.presets.name"
+    }
+  ]
+}
+{% endschema %}

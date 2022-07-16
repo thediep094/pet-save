@@ -1,0 +1,223 @@
+<header-custom>
+  <div class="header" id="header">
+    <div class="header__wrapper">
+      <div class="header__left">
+        {%- for link in section.settings.menu.links -%}
+          <a href="{{ link.url }}" class="header__link" {% if link.current %} aria-current="page" {% endif %}>
+            {{ link.title | escape }}
+              {% if link.title == "Shop" %}
+                {% render 'icon-arrow-down-shop' %}
+              {% endif %}
+          </a>
+        {%- endfor -%}
+      </div>
+      <div class="header__logo" style="width:{{section.settings.logo_width}}px !important">
+        {%- if request.page_type == 'index' -%}
+          <h1 class="header__heading">
+            {%- endif -%}
+              <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+                {%- if section.settings.logo != blank -%}
+                  {%- assign logo_alt = section.settings.logo.alt | default: shop.name | escape -%}
+                    {%- assign logo_height = section.settings.logo_width | divided_by: section.settings.logo.aspect_ratio -%}
+                      {{ section.settings.logo | image_url: width: section.settings.width | image_tag:
+                        class: 'header__heading-logo',
+                        widths: '50, 100, 150, 200, 250, 300, 400, 500',
+                        height: logo_height,
+                        width: section.settings.logo_width,
+                        alt: logo_alt
+                        }}
+                        {%- else -%}
+                            <span class="h2">{{ shop.name }}</span>
+                        {%- endif -%}
+                </a>
+            {%- if request.page_type == 'index' -%}
+          </h1>
+        {%- endif -%}
+
+      </div>
+      <div class="header__right">
+        <div class="header__search" id="header__search">
+          {% render 'icon-search' %}
+        </div>
+        <a class="header__signin" href="{{ routes.account_url }}">SIGN IN</a>
+        <a class="header__mybag" href="{{ routes.cart_url }}">MY BAG</a>
+        <!-- <a href="{{ routes.cart_url }}" style="text-decoration: none;"> -->
+        <a class="header__right__count" id="header__right__count" href="{{ routes.cart_url }}">
+          <p class="header__right__count__p" href="{{ routes.cart_url }}">{{ cart.item_count }}</p>
+        </a>
+      <!-- </a> -->
+
+        </div>
+      </div>
+      <div class="header__search__modal" id="header__search__modal">
+        {%- if settings.predictive_search_enabled -%}
+          <predictive-search class="header--search__modal__predictive" data-loading-text="{{ 'accessibility.loading' | t }}">
+            {%- endif -%}
+              <form action="{{ routes.search_url }}" method="get" role="search" class="search header__search__modal__wrapper">
+
+                <div class="header__search__modal__top">
+                  <input class="header__search__modal__input" type="search" name="q" value="" placeholder="{{ 'general.search.search' | t }}" {%- if settings.predictive_search_enabled -%} role="combobox" aria-expanded="false" aria-owns="predictive-search-results-list" aria-controls="predictive-search-results-list" aria-haspopup="listbox" aria-autocomplete="list" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" {%- endif -%}>
+                  <input name="options[prefix]" type="hidden" value="last">
+                  <button aria-label="{{'general.search.search'|t}}" class="header__search__modal__button__search">
+                    {% render 'icon-search-modal' %}
+                  </button>
+                </div>
+                <div class="header__search__modal__close" id="header__search__modal__close">
+                  {% render 'icon-close-search-modal' %}
+                </div>
+
+                {%- if settings.predictive_search_enabled -%}
+                  <div class="predictive-search predictive-search--header" data-predictive-search tabindex="-1">
+                    <div class="predictive-search__loading-state">
+                      <svg aria-hidden="true" class="spinner" focusable="false" role="presentation" viewbox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                        <circle class="path" cx="33" cy="33" fill="none" r="30" stroke-width="6"></circle>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <span aria-hidden="true" class="predictive-search-status visually-hidden" role="status"></span>
+                {%- endif -%}
+              </form>
+              {%- if settings.predictive_search_enabled -%}
+              </predictive-search>
+        {%- endif -%}
+    </div>
+  </div>
+</header-custom>
+
+{% javascript %}
+class HeaderCustom extends HTMLElement {
+    /**
+     * Header wrapper element
+     */
+    header;
+    /**
+     * Check if home page
+     * then add class header__transparent
+     */
+    isHomePage;
+    /**
+     * Header search button.
+     * When click: permit scroll and open search modal
+     */
+    headerSearch;
+    /**
+     * Close search button.
+     * When click: allow scroll and close search modal
+     */
+    closeSearch;
+    /**
+     * Search modal element
+     */
+    searchModal;
+    /**
+     * HTML body element
+     */
+    body;
+    /**
+     * Current header position
+     */
+    currentScrollTop;
+    constructor() {
+        super();
+        this.header = document.getElementById('header');
+        this.isHomePage = document.getElementById('template-index') !== null;
+        this.headerSearch = document.getElementById('header__search');
+        this.closeSearch = document.getElementById('header__search__modal__close');
+        this.searchModal = document.getElementById('header__search__modal');
+        this.body = document.querySelector('body');
+        this.currentScrollTop = 0;
+        this.onScrollHandle = this.onScroll.bind(this);
+    }
+    connectedCallback() {
+        window.addEventListener('scroll', this.onScrollHandle);
+        this.headerSearch.addEventListener('click', this.onSearchClick.bind(this));
+        this.closeSearch.addEventListener('click', this.onSearchClick.bind(this));
+        this.firstCheck();
+    }
+    disconnectedCallback() {
+        window.removeEventListener('scroll', this.onScrollHandle);
+        this.headerSearch.removeEventListener('click', this.onSearchClick.bind(this));
+    }
+    onScrollHandle = () => {
+        this.onScroll();
+    };
+    firstCheck() {
+        if (!this.isHomePage) {
+            this.header.classList.add('header__nothome');
+            this.headerSearch.classList.add('header__search__background');
+        }
+    }
+    onScroll() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop === 0) {
+            if (this.isHomePage) {
+                this.header.classList.add('header__transparent');
+                this.header.classList.remove('header__white');
+                this.headerSearch.classList.remove('header__search__background');
+            }
+            else {
+                this.header.classList.add('header__white');
+                this.header.classList.remove('header__transparent');
+            }
+        }
+        else if (scrollTop > 0 && this.currentScrollTop > scrollTop) {
+            this.header.classList.add('header__up');
+            this.header.classList.remove('header__transparent');
+            this.header.classList.remove('header__down');
+            this.headerSearch.classList.add('header__search__background');
+        }
+        else if (scrollTop > 0 && scrollTop > this.currentScrollTop) {
+            this.header.classList.add('header__down');
+            this.header.classList.remove('header__transparent');
+            this.header.classList.remove('header__up');
+            this.headerSearch.classList.add('header__search__background');
+        }
+        this.currentScrollTop = scrollTop;
+    }
+    onSearchClick() {
+        if (!this.searchModal.classList.contains('header__search__modal--active')) {
+            this.body.classList.add('disable-scroll');
+            this.body.classList.remove('enable-scroll');
+            this.searchModal.classList.add('header__search__modal--active');
+        }
+        else {
+            this.body.classList.add('enable-scroll');
+            this.body.classList.remove('disable-scroll');
+            this.searchModal.classList.remove('header__search__modal--active');
+        }
+    }
+}
+customElements.define('header-custom', HeaderCustom);
+
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:sections.header.settings.logo.label"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 150,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.header.settings.logo_width.label",
+      "default": 100
+    }
+  ]
+}
+{% endschema %}

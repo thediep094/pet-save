@@ -1,0 +1,331 @@
+{
+  "settings_schema": {
+    "1colors": {
+      "name": "Colors",
+      "settings": {
+        "primary": {
+          "content": "Primary colors",
+          "accent_1": "Accent 1",
+          "accent_2": "Accent 2"
+        },
+        "secondary": {
+          "content": "Secondary colors",
+          "text": "Text",
+          "subtitle": "Subtitle & label",
+          "background_1": "Background 1",
+          "background_2": "Background 2",
+          "background_3": "Background 3"
+        },
+        "header": {
+          "content": "Header colors",
+          "background": "Background",
+          "page_title": "Page title",
+          "link": "Link & hover",
+          "line": "Line"
+        },
+        "footer": {
+          "content": "Footer colors",
+          "background": "Background",
+          "title": "Title",
+          "text": "Text",
+          "link": "Link & hover",
+          "line": "Line"
+        },
+        "button": {
+          "content": "Button colors",
+          "label": "Label",
+          "color_1": "Color 1",
+          "color_2": "Color 2"
+        }
+      }
+    },
+    "2typography": {
+      "name": "Typography",
+      "settings": {
+        "type_header_font": {
+          "label": "Font",
+          "info": "Selecting a different font can affect the speed of your store. [Learn more about system fonts.](https://help.shopify.com/manual/online-store/os/store-speed/improving-speed#fonts)"
+        },
+        "heading_scale": {
+          "label": "Font size scale"
+        },
+        "header__1": {
+          "content": "Headings"
+        },
+        "header__2": {
+          "content": "Body"
+        },
+        "type_body_font": {
+          "label": "Font",
+          "info": "Selecting a different font can affect the speed of your store. [Learn more about system fonts.](https://help.shopify.com/manual/online-store/os/store-speed/improving-speed#fonts)"
+        },
+        "body_scale": {
+          "label": "Font size scale"
+        }
+      }
+    },
+    "5social-media": {
+      "name": "Social media",
+      "settings": {
+        "header": {
+          "content": "Social accounts"
+        },
+        "social_twitter_link": {
+          "label": "Twitter",
+          "info": "https://twitter.com/shopify"
+        },
+        "social_facebook_link": {
+          "label": "Facebook",
+          "info": "https://facebook.com/shopify"
+        },
+        "social_pinterest_link": {
+          "label": "Pinterest",
+          "info": "https://pinterest.com/shopify"
+        },
+        "social_instagram_link": {
+          "label": "Instagram",
+          "info": "http://instagram.com/shopify"
+        },
+        "social_tiktok_link": {
+          "label": "TikTok",
+          "info": "https://tiktok.com/@shopify"
+        },
+        "social_tumblr_link": {
+          "label": "Tumblr",
+          "info": "https://shopify.tumblr.com"
+        },
+        "social_snapchat_link": {
+          "label": "Snapchat",
+          "info": "https://www.snapchat.com/add/shopify"
+        },
+        "social_youtube_link": {
+          "label": "YouTube",
+          "info": "https://www.youtube.com/shopify"
+        },
+        "social_vimeo_link": {
+          "label": "Vimeo",
+          "info": "https://vimeo.com/shopify"
+        }
+      }
+    },
+    "6search-input": {
+      "name": "Search behavior",
+      "settings": {
+        "header": {
+          "content": "Product suggestions"
+        },
+        "predictive_search_enabled": {
+          "label": "Enable product suggestions"
+        },
+        "predictive_search_show_vendor": {
+          "label": "Show vendor",
+          "info": "Visible when product suggestions enabled."
+        },
+        "predictive_search_show_price": {
+          "label": "Show price",
+          "info": "Visible when product suggestions enabled."
+        }
+      }
+    },
+    "7favicon": {
+      "name": "Favicon",
+      "settings": {
+        "favicon": {
+          "label": "Favicon image",
+          "info": "Will be scaled down to 32 x 32px"
+        }
+      }
+    }
+  },
+  "sections": {
+    "all": {
+      "padding": {
+        "section_padding_heading": "Section padding",
+        "padding_top": "Top padding",
+        "padding_bottom": "Bottom padding"
+      },
+      "background": {
+        "background_image_desktop": "Desktop Background Image",
+        "background_image_mobile": "Mobile Background Image"
+      },
+      "spacing": "Spacing",
+      "colors": {
+        "accent_1": {
+          "label": "Accent 1"
+        },
+        "accent_2": {
+          "label": "Accent 2"
+        },
+        "background_1": {
+          "label": "Background 1"
+        },
+        "background_2": {
+          "label": "Background 2"
+        },
+        "inverse": {
+          "label": "Inverse"
+        },
+        "label": "Color scheme",
+        "has_cards_info": "To change the card color scheme, update your theme settings."
+      },
+      "heading_size": {
+        "label": "Heading size",
+        "options__1": {
+          "label": "Small"
+        },
+        "options__2": {
+          "label": "Medium"
+        },
+        "options__3": {
+          "label": "Large"
+        },
+        "options__4": {
+          "label": "Extra large"
+        }
+      }
+    },
+    "apps": {
+      "name": "Apps",
+      "settings": {
+        "include_margins": {
+          "label": "Make section margins the same as theme"
+        }
+      },
+      "presets": {
+        "name": "Apps"
+      }
+    },
+    "custom-liquid": {
+      "name": "Custom Liquid",
+      "settings": {
+        "custom_liquid": {
+          "label": "Custom Liquid",
+          "info": "Add app snippets or other Liquid code to create advanced customizations."
+        }
+      },
+      "presets": {
+        "name": "Custom Liquid"
+      }
+    },
+    "header": {
+      "name": "Header",
+      "settings": {
+        "logo": {
+          "label": "Logo image"
+        },
+        "logo_width": {
+          "unit": "px",
+          "label": "Custom logo width"
+        },
+        "menu": {
+          "label": "Menu"
+        },
+        "menu_type_desktop": {
+          "label": "Desktop menu type",
+          "info": "Menu type is automatically optimized for mobile.",
+          "options__1": {
+            "label": "Dropdown"
+          },
+          "options__2": {
+            "label": "Mega menu"
+          }
+        },
+        "show_line_separator": {
+          "label": "Show separator line"
+        },
+        "enable_sticky_header": {
+          "label": "Enable sticky header",
+          "info": "Header shows on the screen as customers scroll up."
+        },
+        "margin_bottom": {
+          "label": "Bottom margin"
+        }
+      }
+    },
+    "image-banner": {
+      "name": "Image Banner",
+      "settings": {
+        "imagebaner": {
+          "label": "Image Banner",
+          "title": " Title",
+          "subtitle": "Subtitle",
+          "textbutton": "Text Button",
+          "button_link": "Button Link",
+          "image_banner_type": "Image Banner Type"
+        }
+      },
+      "preset": {
+        "name": "Image Banner"
+      }
+    },
+    "popular-product": {
+      "name": "Popular Product",
+      "settings": {
+        "popularproduct": {
+          "label": "Popular Product",
+          "title": " Title",
+          "description": "Description",
+          "textbutton": "Text Button",
+          "button_link": "Button Link",
+          "image_banner_type": "Image Banner Type"
+        }
+      },
+      "presets": {
+        "name": "Popular Product"
+      }
+    },
+    "popular-products": {
+      "name": "Popular products",
+      "settings": {
+        "popularproduct": {
+          "label": "Popular product",
+          "title": " Title",
+          "description": "Description",
+          "textbutton": "Button text",
+          "button_link": "Button link",
+          "image_banner_type": "Image banner type"
+        }
+      },
+      "presets": {
+        "name": "Popular products"
+      }
+    },
+    "product-information": {
+      "name": "Product Information",
+      "settings": {
+        "popularproduct": {
+          "label": "Product Information",
+          "title": " Title",
+          "description": "Description",
+          "textbutton": "Text Button",
+          "button_link": "Button Link",
+          "image_banner_type": "Image Banner Type"
+        }
+      },
+      "presets": {
+        "name": "Product Information"
+      }
+    },
+    "testimonials": {
+      "name": "Testimonials",
+      "settings": {
+        "title": {
+          "label": "Title"
+        }
+      },
+      "blocks": {
+        "name": "slide",
+        "settings": {
+          "label_image_front": "Image 1",
+          "label_image_back": "Image 2",
+          "label_title_slide": "Title's Slide",
+          "label_avatar_author": "Avatar's author",
+          "label_name_author": "Name's Author"
+        }
+      },
+      "presets": {
+        "name": "Testimonials"
+      }
+    }
+  }
+}

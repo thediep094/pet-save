@@ -1,0 +1,318 @@
+{{ 'section-product-information.css' | asset_url | stylesheet_tag }}
+
+{% assign index = 0 %}
+{%- assign product_form_id = 'product-form-' | append: section.id -%}
+
+<div class="productInformation">
+  <div class="productInformation__slideImgs">
+    <div id="primary-slider" class="splide productInformation__slideImgs--main">
+      <div class="splide__track">
+        <ul class="splide__list">
+          {%- for image in product.images -%}
+          <li class="splide__slide">
+            <img src="{{ image | product_img_url: 'large' }}" alt="" >
+          </li>
+        {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+
+    <div id="secondary-slider" class="splide productInformation__slideImgs__splide">
+      <div class="splide__arrows">
+        <button class="splide__arrow splide__arrow--prev">
+          {% render 'icon-slide-button' %}
+        </button>
+        <button class="splide__arrow splide__arrow--next">
+          {% render 'icon-slide-button' %}
+        </button>
+      </div>
+      <div class="splide__track">
+        <ul class="splide__list">
+          {%- for image in product.images -%}
+              <li class="splide__slide">
+                <img src="{{ image | product_img_url: 'large' }}" alt="" class="splide__slide__img">
+              </li>
+            {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div class="productInformation__info">
+    <div class="productInformation__info__wrapper">
+      <div class="productInformation__info__tag">
+        <span class="productInformation__info__tag__text">{{ product.tags }}</span>
+      </div>
+
+      <div class="productInformation__title">
+        <div class="productInformation__title__text">
+          {{ product.title }}
+        </div>
+      </div>
+
+      <div class="productInformation__evaluate">
+          {% render 'icon-star-good' %}
+          {% render 'icon-star-good' %}
+          {% render 'icon-star-good' %}
+          {% render 'icon-star-good' %}
+          {% render 'icon-star-notgood' %}
+          <div class="productInformation__evaluate__reviews">(12 reviews)</div>
+      </div>
+
+      <div class="productInformation__price">
+        <div class="productInformation__price__original">
+            {{ product.compare_at_price | money }}
+        </div>
+        <div class="no-js-hidden productInformation__price__current" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+            {%- render 'price', product: product, use_variant: true, price_class: 'price--large', show_sale: false -%}
+        </div>
+      </div>
+
+      <div class="productInformation__description">
+        <div class="productInformation__description__text">
+          {{ product.description }}
+        </div>
+      </div>
+
+      <div class="productInformation__properties">
+        <div class="productInformation__properties__title">
+          <span class="productInformation__properties__title__text">Properties</span>
+        </div>
+
+        <div class="productInformation__properties__items">
+          <div class="productInformation__properties__items__item">
+            <div class="productInformation__properties__items__item__icon">
+              {% render 'icon-footer-dog' %}
+            </div>
+            <div class="productInformation__properties__items__item__text">
+              FOR ACTIVE DOG
+            </div>
+          </div>
+
+          <div class="productInformation__properties__items__item">
+            <div class="productInformation__properties__items__item__icon">
+              {% render 'icon-flash' %}
+            </div>
+            <div class="productInformation__properties__items__item__text">
+              HIGH ENERGY
+            </div>
+          </div>
+
+          <div class="productInformation__properties__items__item">
+            <div class="productInformation__properties__items__item__icon">
+              {% render 'icon-barley' %}
+            </div>
+            <div class="productInformation__properties__items__item__text">
+              GRAIN FREE
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="productInformation__form" >
+
+        <quantity-input class="quantity productInformation__qualityPurchased">
+          <button class="quantity__button no-js-hidden productInformation__qualityPurchased__minus" name="minus" type="button">
+            <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
+            {% render 'icon-minus-pet' %}
+          </button>
+          <input class="quantity__input productInformation__qualityPurchased__number"
+              type="number"
+              name="quantity"
+              id="Quantity-{{ section.id }}"
+              min="1"
+              value="1"
+              form="{{ product_form_id }}"
+            >
+          <button class="quantity__button no-js-hidden productInformation__qualityPurchased__plus" name="plus" type="button">
+            <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
+            {% render 'icon-plus-pet' %}
+          </button>
+        </quantity-input>
+
+        <!-- <product-choose-pack>
+          <div class="productInformation__form__select" id="productInformation__form__select">
+
+              <div class="productInformation__form__select__title">
+                <span class="productInformation__form_select__title__text">Choose a pack</span>
+              </div>
+              <div class="productInformation__form__select__value">
+                <span class="productInformation__form_select__value__text">5KG</span>
+                {% render 'icon-arrow-down' %}
+              </div>
+              <div class="productInformation__form__select__modal" id="productInformation__form__select__modal">
+              </div>
+          </div>
+        </product-choose-pack> -->
+        {%- unless product.has_only_default_variant -%}
+          <variant-selects class="no-js-hidden productInformation__form__select" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
+            <div class="productInformation__variant--title">
+              <span class="productInformation__form_select__title__text">Choose a pack</span>
+            </div>
+            {%- for option in product.options_with_values -%}
+              <div class="product-form__input product-form__input--dropdown">
+                <div class="select">
+                  <select id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                    class="select__select "
+                    name="options[{{ option.name | escape }}]"
+                    form="{{ product_form_id }}"
+                  >
+                    {%- for value in option.values -%}
+                      <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %} class="select__option">
+                        {{ value }}
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                  {% render 'icon-arrow-down-shop' %}
+                </div>
+              </div>
+            {%- endfor -%}
+
+            <script type="application/json">
+              {{ product.variants | json }}
+            </script>
+          </variant-selects>
+        {%- endunless -%}
+
+        <div class="productInformation__form__button">
+          <product-form class="product-form">
+            <div class="product-form__error-message-wrapper" role="alert" hidden>
+              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-error" viewBox="0 0 13 13">
+                <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+                <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+                <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+                <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+              </svg>
+              <span class="product-form__error-message"></span>
+            </div>
+
+            {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled>
+              <div class="product-form__buttons">
+                <button
+                  type="submit"
+                  name="add"
+                  class="product-form__submit productInformation__form__button__add button button--full-width {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
+                  {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+                >
+                    <span>
+                      {%- if product.selected_or_first_available_variant.available -%}
+                        {{ 'products.product.add_to_cart' | t }}
+                      {%- else -%}
+                        {{ 'products.product.sold_out' | t }}
+                      {%- endif -%}
+                    </span>
+                    <div class="loading-overlay__spinner hidden">
+                      <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                      </svg>
+                    </div>
+                </button>
+
+                <div class="productInformation__form__button__buy">
+                  {{ form | payment_button }}
+                </div>
+
+
+              </div>
+            {%- endform -%}
+          </product-form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+{% javascript %}
+class ProductQualityPurchased extends HTMLElement {
+    /**
+     * get minus to check if number = 01 can't click and click to minus
+     */
+    minus;
+    /**
+     * get plus  to click to plus
+     */
+    plus;
+    /**
+       * get number to change number
+       */
+    number;
+    constructor() {
+        super();
+        this.minus = document.getElementById('productInformation__qualityPurchased__minus');
+        this.plus = document.getElementById('productInformation__qualityPurchased__plus');
+        this.number = document.getElementById('productInformation__qualityPurchased__number__text');
+    }
+    connectedCallback() {
+        this.minus.addEventListener('click', this.minusClick.bind(this));
+        this.plus.addEventListener('click', this.plusClick.bind(this));
+    }
+    disconnectedCallback() {
+        this.minus.removeEventListener('click', this.minusClick.bind(this));
+        this.plus.removeEventListener('click', this.plusClick.bind(this));
+    }
+    minusClick() {
+        if (Number(this.number.innerText) > 1) {
+            this.number.innerText = String(Number(this.number.innerText) - 1);
+        }
+    }
+    plusClick() {
+        this.number.innerText = String(Number(this.number.innerText) + 1);
+    }
+}
+customElements.define('product-quality-purchased', ProductQualityPurchased);
+class ProductChoosePack extends HTMLElement {
+    /**
+     * check if click select open modal select
+     */
+    select;
+    /**
+     * select modal to open and close
+     */
+    modal;
+    /**
+     * boolean to check if click select open modal select and close modal select
+     */
+    isOpen;
+    constructor() {
+        super();
+        this.select = document.getElementById('productInformation__form__select');
+        this.modal = document.getElementById('productInformation__form__select__modal');
+        this.isOpen = false;
+    }
+    connectedCallback() {
+        this.select.addEventListener('click', this.selectClick.bind(this));
+    }
+    disconnectedCallback() {
+        this.select.removeEventListener('click', this.selectClick.bind(this));
+    }
+    selectClick() {
+        if (this.isOpen) {
+            this.modal.classList.remove('productInformation__form__select__modal--open');
+            this.isOpen = false;
+        }
+        else {
+            this.modal.classList.add('productInformation__form__select__modal--open');
+            this.isOpen = true;
+        }
+    }
+}
+
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:sections.product-information.name",
+  "class": "section-product-information",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "t:sections.product-information.presets.name"
+    }
+  ]
+}
+{% endschema %}

@@ -6,7 +6,7 @@
           <a href="{{ link.url }}" class="header__link" {% if link.current %} aria-current="page" {% endif %}>
             {{ link.title | escape }}
               {% if link.title == "Shop" %}
-                {% render 'icon-arrow-down' %}
+                {% render 'icon-arrow-down-shop' %}
               {% endif %}
           </a>
         {%- endfor -%}
@@ -49,7 +49,7 @@
 
         </div>
       </div>
-      <div id="header__search__modal" class="header__search__modal">
+      <div class="header__search__modal" id="header__search__modal">
         {%- if settings.predictive_search_enabled -%}
           <predictive-search class="header--search__modal__predictive" data-loading-text="{{ 'accessibility.loading' | t }}">
             {%- endif -%}
@@ -63,7 +63,7 @@
                   </button>
                 </div>
                 <div class="header__search__modal__close" id="header__search__modal__close">
-                  {% render 'icon-close-search' %}
+                  {% render 'icon-close-search-modal' %}
                 </div>
 
                 {%- if settings.predictive_search_enabled -%}
