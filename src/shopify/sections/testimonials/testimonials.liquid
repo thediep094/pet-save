@@ -1,0 +1,35 @@
+{{ 'section-testimonials.css' | asset_url | stylesheet_tag }}
+
+<div class="splide">
+  <div class="splide__track">
+    <ul class="splide__list">
+    {%- if section.blocks.size > 0 -%}
+    {%- for block in section.blocks -%}
+    <li class="slideshow-slide container-xl splide__slide">
+      <div class="slideshow-slide__content col-6 ">
+        <p class="slideshow-slide__content__name">
+          {{ section.settings.title }}
+        </p>
+       <div class="content-title-author">
+        <h3 class="content-title-author__title">
+          <span> {% render 'icon-quotation-mark' %} </span>
+          {{ block.settings.slide_title }}
+        </h3>
+        <div class="content-title-author__author">
+          <img
+            class="avatar-author-slide"
+            srcset="{{block.settings.avatar_author | img_url: 'master'  }}"
+          />
+          <p class="name-author-slide">{{ block.settings.name_author }}</p>
+        </div>
+       </div>
+      </div>
+      <div class="slideshow-slide__image col-6 ">
+        <img  class="image-front" srcset="{{block.settings.image_front | img_url: 'master'  }}" />
+        <img class="image-back" srcset="{{block.settings.image_back | img_url: 'master'  }}" />
+      </div>
+    </li>
+    {%- endfor -%} {%- else -%} {%- endif -%}
+  </ul>
+  </div>
+</div>

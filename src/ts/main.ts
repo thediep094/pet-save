@@ -2,7 +2,8 @@
 import './lib/smoothScroll';
 
 // Import all sections ts files
-import '../shopify/sections/**/*.script-global.ts'
+// eslint-disable-next-line import/extensions
+import '../shopify/sections/**/*.script-global.ts';
 
 // Import SVG Sprite Images
 import './sprite-image/bag.svg';

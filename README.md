@@ -23,7 +23,7 @@ section-name
   - `section-name.script-external.ts` - will generate a `section-name.js` in `shopify/assets` folder
   - `section-name.script-global.ts` - will be embed in `shopify/assets/main.js`
   - `section-name.script-internal.ts` - will be added in section liquid code, in side `{% javascript %}` tag
-  - `section-section-name.scss` - will generate `shopify/assets/section-section-name.css`
+  - `section-{section-name}.scss` - will generate `shopify/assets/section-{section-name}.css`
   - `schema.js`
 
 ## How to use

@@ -1,0 +1,143 @@
+.popularProduct {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #FFFBEF;
+
+  .popularProduct__top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 176px;
+
+    .popularProduct__title {
+      font-family: 'Cooper Md BT';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 44px;
+      color: #f0510d;
+    }
+
+    .popularProduct__des {
+      max-width: 685px;
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 19px;
+      line-height: 146%;
+      text-align: center;
+      color: #894722;
+      order: 1;
+      flex-grow: 0;
+      margin-bottom: 56px;
+    }
+  }
+
+  .popularProduct__items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    .popularProduct__item {
+      max-width: 444px;
+      display: flex;
+      flex-direction: column;
+      border-radius: 16px;
+      background-color: #ffffff;
+      overflow: hidden;
+      margin: 0 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0px 10px 70px -10px rgba(112, 33, 0, 0.15);
+      position: relative;
+      padding-bottom: 70px;
+
+      .popularProduct__item__sale {
+        position: absolute;
+        top: 24px;
+        left: 24px;
+        background: #FFE6C9;
+        border-radius: 14px;
+        width: 62px;
+        height: 28px;
+        color: #BF8D77;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 13px;
+      }
+
+      .popularProduct__img {
+        width: 100%;
+        height: 592px;
+        object-fit: cover;
+      }
+
+      .popularProduct__itemTitle {
+        font-family: "Cooper Md BT";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 22px;
+        text-align: center;
+        letter-spacing: 0.004em;
+        color: #894722;
+        max-width: 364px;
+        padding-bottom: 16px;
+      }
+
+      .popularProduct__tag {
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #BF8D77;
+        margin-top: 20px;
+      }
+
+      .popularProduct__price {
+        position: absolute;
+        color: #F0510D;
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 17px;
+        display: flex;
+        flex-direction: row;
+        bottom: 25px;
+
+        .popularProduct__maxprice {
+          color: #BF8D77;
+          text-decoration-line: line-through;
+          margin-right: 8px;
+          font-size: 15px;
+          margin-top: 2px;
+        }
+      }
+
+    }
+
+  }
+
+  .icon-button-popular-product {
+    width: 108px;
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 72px;
+    margin-top: 62px;
+    color: #F0510D;
+  }
+}

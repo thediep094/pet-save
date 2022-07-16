@@ -9,12 +9,12 @@ import { breakpoint } from '../constant/breakpoint';
  */
 
 // class infix
-type sizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+type TSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
 // max-width or min-width
-type scaleType = 'min' | 'max';
+type TScaleType = 'min' | 'max';
 
-function getMediaQueryList(size: sizeType, scale: scaleType = 'min') {
+function getMediaQueryList(size: TSizeType, scale: TScaleType = 'min') {
   if (scale === 'max') {
     return window.matchMedia(`(max-width: ${breakpoint[size]})`);
   }

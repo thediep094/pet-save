@@ -9,7 +9,6 @@
   background-position: center;
   background-repeat: no-repeat !important;
 }
-
 .image-banner {
   position: absolute;
   display: flex;
@@ -18,7 +17,6 @@
   flex-direction: column;
   gap: 20px;
 }
-
 .image-banner--type2 {
   width: 566px;
   height: 408px;
@@ -29,9 +27,8 @@
   top: 199.84px;
   left: 257px;
 }
-
 .image-banner__title {
-  font-family: "Cooper Md BT";
+  font-family: 'Cooper Md BT';
   font-style: normal;
   font-weight: 400;
   font-size: 44px;
@@ -39,14 +36,13 @@
   color: #f0510d;
   width: 480px;
   margin: 0;
+  &.image-banner__title--type2 {
+    color: #ffffff;
+    font-size: 30px;
+  }
 }
-.image-banner__title.image-banner__title--type2 {
-  color: #ffffff;
-  font-size: 30px;
-}
-
 .image-banner__subtitle {
-  font-family: "Lato";
+  font-family: 'Lato';
   font-style: normal;
   font-weight: 500;
   font-size: 17px;
@@ -55,11 +51,9 @@
   width: 400px !important;
   margin: 0;
 }
-
 .image-banner__subtitle--type2 {
   display: none;
 }
-
 .image-banner__button {
   display: flex;
   flex-direction: column;
@@ -70,28 +64,27 @@
   height: 35.93px;
   text-decoration: none;
   margin-top: 20px;
+  p {
+    width: 110px;
+    height: 20px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 132%;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+    color: #f0510d;
+  }
+  span {
+    width: 110px;
+    height: 5.86px;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+  }
 }
-.image-banner__button p {
-  width: 110px;
-  height: 20px;
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 132%;
-  text-align: center;
-  text-transform: uppercase;
-  margin: 0;
-  color: #f0510d;
-}
-.image-banner__button span {
-  width: 110px;
-  height: 5.86px;
-  flex: none;
-  order: 1;
-  align-self: stretch;
-}
-
 .image-banner__button--type2 {
   width: 214px;
   height: 60px;
@@ -99,7 +92,7 @@
   border-radius: 32px;
   padding: 20px 48px;
   gap: 8px;
-}
-.image-banner__button--type2 p {
-  color: #f0510d;
+  p {
+    color: #f0510d;
+  }
 }

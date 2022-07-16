@@ -1,0 +1,21 @@
+{
+  "name": "Testimonials",
+  "settings": {
+    "title": {
+      "label": "Title"
+    }
+  },
+  "blocks": {
+    "name": "slide",
+    "settings": {
+      "label_image_front": "Image 1",
+      "label_image_back": "Image 2",
+      "label_title_slide": "Title's Slide",
+      "label_avatar_author": "Avatar's author",
+      "label_name_author": "Name's Author"
+    }
+  },
+  "presets": {
+    "name": "Testimonials"
+  }
+}

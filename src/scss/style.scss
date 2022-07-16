@@ -1,5 +1,7 @@
 @charset "utf-8";
 
+@use '@splidejs/splide/css';
+
 // =========================================
 // Foundation
 // =========================================
@@ -10,6 +12,7 @@
 // =========================================
 @use './utility/screen-reader';
 @use './utility/text-align';
+@use './utility/scroll';
 
 // =========================================
 // Bootstrap

@@ -1,0 +1,17 @@
+{
+  "name": "Image Banner",
+  "settings": {
+    "imagebaner":{
+      "label":"Image Banner",
+      "title": " Title",
+      "subtitle":"Subtitle",
+      "textbutton":"Text Button",
+      "button_link":"Button Link",
+      "image_banner_type": "Image Banner Type"
+    }
+  },
+  "preset": {
+    "name": "Image Banner"
+  }
+}
+

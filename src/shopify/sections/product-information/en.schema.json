@@ -1,0 +1,16 @@
+{
+  "name": "Product Information",
+  "settings": {
+    "popularproduct": {
+      "label": "Product Information",
+      "title": " Title",
+      "description": "Description",
+      "textbutton": "Text Button",
+      "button_link": "Button Link",
+      "image_banner_type": "Image Banner Type"
+    }
+  },
+  "presets": {
+    "name": "Product Information"
+  }
+}

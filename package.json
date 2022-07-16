@@ -18,8 +18,8 @@
     "format": "prettier --write --plugin-search-dir=. 'src/**/*.{js,ts}'",
     "stylelint": "stylelint 'src/**/*.{css,scss}'",
     "stylelint:fix": "stylelint 'src/**/*.{css,scss}' --fix",
-    "eslint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
-    "eslint:fix": "eslint --fix 'src/**/*.{js,ts}'",
+    "eslint": "eslint 'src/**/*.{ts,tsx}'",
+    "eslint:fix": "eslint --fix 'src/**/*.{ts}'",
     "checkTypes": "tsc --noEmit",
     "checkLicense": "license-checker --production",
     "test": "npm-run-all -p unit e2e",
@@ -73,8 +73,8 @@
     "css-loader": "^6.7.0",
     "dotenv": "^16.0.0",
     "eslint": "^8.10.0",
-    "eslint-plugin-jest": "^26.1.1",
-    "eslint-plugin-playwright": "^0.8.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
     "glob-import-loader": "^1.2.0",
     "jest": "^27.5.1",
     "license-checker": "^25.0.1",
@@ -107,6 +107,7 @@
     "yarn-audit-fix": "^9.1.2"
   },
   "dependencies": {
+    "@splidejs/splide": "^4.0.7",
     "micromodal": "^0.4.10",
     "smooth-scroll": "^16.1.3"
   }

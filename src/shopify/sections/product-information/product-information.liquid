@@ -1,0 +1,165 @@
+{{ 'section-product-information.css' | asset_url | stylesheet_tag }}
+
+{% assign index = 0 %}
+<div class="productInformation">
+  <div class="productInformation__slideImgs">
+    <div id="primary-slider" class="splide productInformation__slideImgs--main">
+      <div class="splide__track">
+        <ul class="splide__list">
+          {%- for image in product.images -%}
+          <li class="splide__slide">
+            <img src="{{ image | product_img_url: 'large' }}" alt="" >
+          </li>
+        {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+
+    <div id="secondary-slider" class="splide productInformation__slideImgs__splide">
+      <div class="splide__arrows">
+        <button class="splide__arrow splide__arrow--prev">
+          {% render 'icon-slide-button' %}
+        </button>
+        <button class="splide__arrow splide__arrow--next">
+          {% render 'icon-slide-button' %}
+        </button>
+      </div>
+      <div class="splide__track">
+        <ul class="splide__list">
+          {%- for image in product.images -%}
+              <li class="splide__slide">
+                <img src="{{ image | product_img_url: 'large' }}" alt="" class="splide__slide__img">
+              </li>
+            {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div class="productInformation__info">
+    <div class="productInformation__info__wrapper">
+      <div class="productInformation__info__tag">
+        <span class="productInformation__info__tag__text">{{ product.tags }}</span>
+      </div>
+
+      <div class="productInformation__title">
+        <div class="productInformation__title__text">
+          {{ product.title }}
+        </div>
+      </div>
+
+      <div class="productInformation__evaluate">
+          {% render 'icon-star-good' %}
+          {% render 'icon-star-good' %}
+          {% render 'icon-star-good' %}
+          {% render 'icon-star-good' %}
+          {% render 'icon-star-notgood' %}
+          <div class="productInformation__evaluate__reviews">(12 reviews)</div>
+      </div>
+
+      <div class="productInformation__price">
+        <div class="productInformation__price__original">
+            {{ product.compare_at_price | money }}
+        </div>
+        <div class="productInformation__price__current">
+            {{ product.price | money }}
+        </div>
+      </div>
+
+      <div class="productInformation__description">
+        <div class="productInformation__description__text">
+          {{ product.description }}
+        </div>
+      </div>
+
+      <div class="productInformation__properties">
+        <div class="productInformation__properties__title">
+          <span class="productInformation__properties__title__text">Properties</span>
+        </div>
+
+        <div class="productInformation__properties__items">
+          <div class="productInformation__properties__items__item">
+            <div class="productInformation__properties__items__item__icon">
+              {% render 'icon-footer-dog' %}
+            </div>
+            <div class="productInformation__properties__items__item__text">
+              FOR ACTIVE DOG
+            </div>
+          </div>
+
+          <div class="productInformation__properties__items__item">
+            <div class="productInformation__properties__items__item__icon">
+              {% render 'icon-flash' %}
+            </div>
+            <div class="productInformation__properties__items__item__text">
+              HIGH ENERGY
+            </div>
+          </div>
+
+          <div class="productInformation__properties__items__item">
+            <div class="productInformation__properties__items__item__icon">
+              {% render 'icon-barley' %}
+            </div>
+            <div class="productInformation__properties__items__item__text">
+              GRAIN FREE
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="productInformation__form" >
+        <product-quality-purchased>
+          <div class="productInformation__qualityPurchased">
+
+            <div id="productInformation__qualityPurchased__minus" class="productInformation__qualityPurchased__minus">
+              {% render 'icon-minus-pet' %}
+            </div>
+            <div class="productInformation__qualityPurchased__number">
+              <span id="productInformation__qualityPurchased__number__text">1</span>
+            </div>
+            <div id="productInformation__qualityPurchased__plus" class="productInformation__qualityPurchased__plus">
+              {% render 'icon-plus-pet' %}
+            </div>
+          </div>
+        </product-quality-purchased>
+        <product-choose-pack>
+          <div class="productInformation__form__select" id="productInformation__form__select">
+
+              <div class="productInformation__form__select__title">
+                <span class="productInformation__form_select__title__text">Choose a pack</span>
+              </div>
+              <div class="productInformation__form__select__value">
+                <span class="productInformation__form_select__value__text">5KG</span>
+                {% render 'icon-arrow-down' %}
+              </div>
+              <div class="productInformation__form__select__modal" id="productInformation__form__select__modal">
+                <div class="productInformation__form__select__modal__item">
+                  <span class="productInformation__form__select__modal__item__text">5KG</span>
+                </div>
+                <div class="productInformation__form__select__modal__item">
+                  <span class="productInformation__form__select__modal__item__text">4KG</span>
+                </div>
+                <div class="productInformation__form__select__modal__item">
+                  <span class="productInformation__form__select__modal__item__text">3KG</span>
+                </div>
+                <div class="productInformation__form__select__modal__item">
+                  <span class="productInformation__form__select__modal__item__text">2KG</span>
+                </div>
+              </div>
+          </div>
+        </product-choose-pack>
+
+        <div class="productInformation__form__button">
+          <button class="productInformation__form__button__add">
+            <span class="productInformation__form__button__add__text">Add to cart</span>
+          </button>
+          <button class="productInformation__form__button__buy">
+            <span class="productInformation__form__button__buy__text">Buy it now</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
